@@ -1,0 +1,39 @@
+{
+  "name": "jvcontactst",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "emotion": "^9.1.3",
+    "jss-rtl": "^0.2.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-emotion": "^9.2.8",
+    "react-jss": "^8.6.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.5",
+    "rimraf": "^2.6.3"
+  },
+  "devDependencies": {
+    "ajv": "^6.10.0",
+    "babel-eslint": "^7.2.3",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "scripts": {
+    "start": "rimraf ./build && react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/"
+  }
+}

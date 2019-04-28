@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{65D221DB-9B5A-4FE1-8D2B-810931809C10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{84394AFD-1B10-495D-A480-2AFD8CB6D0E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{077AEE4D-E408-441C-92F6-E13AAD6D6EA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{45B1BBC9-3CA1-482A-879D-B3B0300E4A46}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{239CFF99-0C33-4B0E-A367-1BA61DA99DE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8D123543-7BBF-46A3-8469-E17EE609D016}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{166F5BF0-851F-469B-8954-FDDA1A9F71DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Application", "src\jvContacts.Application\jvContacts.Application.csproj", "{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Domain", "src\jvContacts.Domain\jvContacts.Domain.csproj", "{A38ECF59-00C7-4245-8881-D137B8106DD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Infrastructure", "src\jvContacts.Infrastructure\jvContacts.Infrastructure.csproj", "{87366375-D435-4D06-8975-613105869F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Persistence", "src\jvContacts.Persistence\jvContacts.Persistence.csproj", "{7FDC58A9-4392-4711-82B5-D52A272F2A52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{ABF686FA-5860-4EBF-AB48-9F65B68641AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Web.React", "src\jvContacts.Web.React\jvContacts.Web.React.csproj", "{23EB9AE3-74D2-46A5-8F82-F234F8531669}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38ECF59-00C7-4245-8881-D137B8106DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38ECF59-00C7-4245-8881-D137B8106DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38ECF59-00C7-4245-8881-D137B8106DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38ECF59-00C7-4245-8881-D137B8106DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87366375-D435-4D06-8975-613105869F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87366375-D435-4D06-8975-613105869F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87366375-D435-4D06-8975-613105869F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87366375-D435-4D06-8975-613105869F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDC58A9-4392-4711-82B5-D52A272F2A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDC58A9-4392-4711-82B5-D52A272F2A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDC58A9-4392-4711-82B5-D52A272F2A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDC58A9-4392-4711-82B5-D52A272F2A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84394AFD-1B10-495D-A480-2AFD8CB6D0E7} = {65D221DB-9B5A-4FE1-8D2B-810931809C10}
+		{077AEE4D-E408-441C-92F6-E13AAD6D6EA1} = {65D221DB-9B5A-4FE1-8D2B-810931809C10}
+		{8D123543-7BBF-46A3-8469-E17EE609D016} = {65D221DB-9B5A-4FE1-8D2B-810931809C10}
+		{166F5BF0-851F-469B-8954-FDDA1A9F71DB} = {65D221DB-9B5A-4FE1-8D2B-810931809C10}
+		{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7} = {077AEE4D-E408-441C-92F6-E13AAD6D6EA1}
+		{A38ECF59-00C7-4245-8881-D137B8106DD4} = {077AEE4D-E408-441C-92F6-E13AAD6D6EA1}
+		{87366375-D435-4D06-8975-613105869F8D} = {8D123543-7BBF-46A3-8469-E17EE609D016}
+		{7FDC58A9-4392-4711-82B5-D52A272F2A52} = {8D123543-7BBF-46A3-8469-E17EE609D016}
+		{23EB9AE3-74D2-46A5-8F82-F234F8531669} = {166F5BF0-851F-469B-8954-FDDA1A9F71DB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {465FDA73-41E7-442E-B71A-C779CCFF494A}
+	EndGlobalSection
+EndGlobal
