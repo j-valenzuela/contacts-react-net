@@ -7,6 +7,7 @@
     "@material-ui/icons": "^3.0.2",
     "emotion": "^9.1.3",
     "jss-rtl": "^0.2.3",
+    "material-table": "^1.34.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-emotion": "^9.2.8",

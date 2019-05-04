@@ -5,9 +5,9 @@ import LockIcon from '@material-ui/icons/Lock';
 
 // Pages
 import {
-  Home,
-  Contacts,
-  Users
+    Home,
+    Contacts,
+    Users
   } from './pages';
 
 export default {
@@ -25,16 +25,15 @@ export default {
       icon: ContactIcon,
       component: Contacts
     },
-    {
+    {      
       name: 'Security',
       type: 'submenu',
       icon: LockIcon,
-      children: [{
-          path: '/users',
-          name: 'Users',
-          component: Users
-        }
-      ]
-    },
+        children: [{
+            path: '/users',
+            name: 'Users',
+            component: Users
+        }]
+    }
   ]
 }; 

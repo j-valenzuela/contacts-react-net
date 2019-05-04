@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\public\static\images\" />
-    <Folder Include="ClientApp\src\pages\Errors\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

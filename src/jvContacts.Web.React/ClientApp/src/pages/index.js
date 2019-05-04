@@ -1,15 +1,11 @@
-﻿// Home
-import Home from './Home/Home';
-
-// Contacts
+﻿import Home from './Home/Home';
 import Contacts from './Contacts/Contacts';
-
-// Security
 import Users from './Users/Users';
-
+import NotFound from './Errors/NotFound';
 
 export {
   Home,
   Contacts,
-  Users
+  Users,
+  NotFound
 }

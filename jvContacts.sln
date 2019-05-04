@@ -20,17 +20,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{166F5BF0-851F-469B-8954-FDDA1A9F71DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Application", "src\jvContacts.Application\jvContacts.Application.csproj", "{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Application", "src\jvContacts.Application\jvContacts.Application.csproj", "{C6EA4E5D-FDD1-4FFC-B90C-43A287ABD5B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Domain", "src\jvContacts.Domain\jvContacts.Domain.csproj", "{A38ECF59-00C7-4245-8881-D137B8106DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Domain", "src\jvContacts.Domain\jvContacts.Domain.csproj", "{A38ECF59-00C7-4245-8881-D137B8106DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Infrastructure", "src\jvContacts.Infrastructure\jvContacts.Infrastructure.csproj", "{87366375-D435-4D06-8975-613105869F8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Infrastructure", "src\jvContacts.Infrastructure\jvContacts.Infrastructure.csproj", "{87366375-D435-4D06-8975-613105869F8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Persistence", "src\jvContacts.Persistence\jvContacts.Persistence.csproj", "{7FDC58A9-4392-4711-82B5-D52A272F2A52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Persistence", "src\jvContacts.Persistence\jvContacts.Persistence.csproj", "{7FDC58A9-4392-4711-82B5-D52A272F2A52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{ABF686FA-5860-4EBF-AB48-9F65B68641AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Web.React", "src\jvContacts.Web.React\jvContacts.Web.React.csproj", "{23EB9AE3-74D2-46A5-8F82-F234F8531669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Web.React", "src\jvContacts.Web.React\jvContacts.Web.React.csproj", "{23EB9AE3-74D2-46A5-8F82-F234F8531669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Tests.Unit", "src\jvContacts.Tests.Unit\jvContacts.Tests.Unit.csproj", "{C00CFB75-05E2-4757-A05C-30DA57A48BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Tests.Integration", "src\jvContacts.Tests.Integration\jvContacts.Tests.Integration.csproj", "{2AA22462-FC46-4614-9C86-886A3A4A27CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +62,14 @@ Global
 		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23EB9AE3-74D2-46A5-8F82-F234F8531669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00CFB75-05E2-4757-A05C-30DA57A48BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00CFB75-05E2-4757-A05C-30DA57A48BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00CFB75-05E2-4757-A05C-30DA57A48BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00CFB75-05E2-4757-A05C-30DA57A48BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +84,8 @@ Global
 		{87366375-D435-4D06-8975-613105869F8D} = {8D123543-7BBF-46A3-8469-E17EE609D016}
 		{7FDC58A9-4392-4711-82B5-D52A272F2A52} = {8D123543-7BBF-46A3-8469-E17EE609D016}
 		{23EB9AE3-74D2-46A5-8F82-F234F8531669} = {166F5BF0-851F-469B-8954-FDDA1A9F71DB}
+		{C00CFB75-05E2-4757-A05C-30DA57A48BAA} = {239CFF99-0C33-4B0E-A367-1BA61DA99DE1}
+		{2AA22462-FC46-4614-9C86-886A3A4A27CB} = {239CFF99-0C33-4B0E-A367-1BA61DA99DE1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {465FDA73-41E7-442E-B71A-C779CCFF494A}

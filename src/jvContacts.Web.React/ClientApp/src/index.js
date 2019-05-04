@@ -3,16 +3,14 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 
 import { AppProvider, Layout } from 'components';
-import { Contacts, Users } from 'pages';
-
+import NotFound from 'pages/Errors/NotFound';
 import registerServiceWorker from 'registerServiceWorker';
 
 render(
     <AppProvider>
         <BrowserRouter>
-            <Switch>
-                <Route exact path="/contacts" component={Contacts} />
-                <Route exact path="/users" component={Users} />
+            <Switch>   
+                <Route exact path="/404" component={NotFound} />                
                 <Route path="/" component={Layout} />
             </Switch>
         </BrowserRouter>

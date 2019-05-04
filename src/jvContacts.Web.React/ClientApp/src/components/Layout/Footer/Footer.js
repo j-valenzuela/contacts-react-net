@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { css } from 'react-emotion';
 
 const appFooter = css `
@@ -24,15 +24,15 @@ const inlineBlock = css `
     display: inline-block;
 `
 
-class Footer extends Component {
-    render() {                
-        return (
-            <Fragment>
-                <footer className={appFooter}>
-                    <span className={inlineBlock}>Copyright Juan Valenzuela &copy; 2019</span>        
-                </footer>
-            </Fragment>
-        );        
-    }
-}
+const Footer = props => {
+   
+    return (
+        <Fragment>
+            <footer className={appFooter}>
+                <span className={inlineBlock}>Copyright Juan Valenzuela &copy; 2019</span>
+            </footer>
+        </Fragment>
+    );
+   
+};
 export default Footer;

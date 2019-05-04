@@ -3,7 +3,7 @@ const LayoutStyles = theme => ({
     position: 'relative',
     overflow: 'hidden',
     width: '100%',
-    maxWidth: '100%',
+    maxWidth: '100%',       
     [theme.breakpoints.down('sm')]: {
       height: 'auto',
       minHeight: 'calc(100vh - 64px)',
@@ -19,7 +19,7 @@ const LayoutStyles = theme => ({
     },
     display: 'flex',
     flexDirection: 'row',
-    flexGrow: 1,
+    flexGrow: 1
   }
 });
 

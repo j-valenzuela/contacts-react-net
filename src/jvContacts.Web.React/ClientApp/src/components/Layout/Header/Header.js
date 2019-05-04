@@ -61,7 +61,7 @@ class Header extends Component {
             <MenuIcon />
           </IconButton>
        
-          <Typography variant="title" color="inherit" style={{ flex: 1 }}>
+          <Typography variant="h6" color="inherit" style={{ flex: 1 }}>
             jvContacts
           </Typography>          
           <div className={ellipseShape}></div>

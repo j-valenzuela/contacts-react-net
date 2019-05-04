@@ -81,7 +81,7 @@ class Layout extends Component {
             <Switch>
                 {routes.items.map((item, index) => (
                     item.type === 'external' ? <Route exact path={item.path} component={item.component} name={item.name} key={index} /> :
-                        item.type === 'submenu' ? item.children.map(subItem => <Route exact path={`${item.path}${subItem.path}`} component={subItem.component} name={subItem.name} />) :
+                        item.type === 'submenu' ? item.children.map(subItem => <Route exact path={`${subItem.path}`} component={subItem.component} name={subItem.name} />) :
                             <Route exact path={item.path} component={item.component} name={item.name} key={index} />
                 ))}
                 <Redirect to="/404" />
@@ -94,17 +94,20 @@ class Layout extends Component {
                     toggleDrawer={this.handleDrawerToggle}
                     toggleFullscreen={this.handleFullscreenToggle}
                 />
+                
                 <div className={classNames(classes.panel, 'theme-dark')}>
                     <Sidebar
                         routes={routes.items}
                         opened={opened}
                         toggleDrawer={this.handleDrawerToggle}
-                    />
+                    />                    
                     <Workspace opened={opened}>
-                        {getRoutes}
-                    </Workspace>
+                        {getRoutes}                        
+                    </Workspace>                                       
                 </div>
+
                 <Footer />
+                
             </Fragment>
         )
     }
