@@ -1,13 +1,12 @@
-﻿import React, { Fragment } from 'react';
+﻿import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
-import MTableToolbar from 'material-table';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 import { Wrapper } from 'components';
+import { UpdateContactForm } from 'components';
 
 const styles = theme => ({
     button: {
@@ -20,16 +19,24 @@ const styles = theme => ({
 
 
 const Contacts = (props) => {
+
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    const handleDialogOpen = (action) => {
+        setDialogOpen(true);
+    };
+
     const { classes } = props;
     return (
         <Fragment>
             <Wrapper>
                 <div>
+                    <UpdateContactForm opened={dialogOpen} mode="Editing" />
                     <div style={{ position: "absolute", top: 15, left: 130, zIndex: 2 }}>
-                        <Button variant="contained" size="small" color="primary" className={classes.button}>
+                        <Button size="small" color="primary" className={classes.button} onClick={handleDialogOpen}>
                             <AddIcon className={classes.leftIcon} />
                             ADD CONTACT
-                                    </Button>
+                        </Button>
                     </div>
                 </div>
                 <MaterialTable

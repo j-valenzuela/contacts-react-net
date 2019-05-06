@@ -9,6 +9,8 @@ import Header from 'components/Layout/Header/Header';
 import Footer from 'components/Layout/Footer/Footer';
 import Sidebar from 'components/Layout/Sidebar/Sidebar';
 
+import UpdateContactForm from 'components/Contacts/UpdateContactForm';
+
 export {
     AppContext,
     AppProvider,
@@ -17,5 +19,6 @@ export {
     Workspace,
     Header,
     Sidebar,    
-    Footer
+    Footer,
+    UpdateContactForm
 }

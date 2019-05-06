@@ -10,6 +10,7 @@
     "material-table": "^1.34.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-draggable": "^3.3.0",
     "react-emotion": "^9.2.8",
     "react-jss": "^8.6.1",
     "react-router-dom": "^4.3.1",
