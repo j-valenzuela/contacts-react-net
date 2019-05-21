@@ -6,7 +6,7 @@ const infoColor = lightBlue.default[500];
 const warningColor = yellow.default[500];
 
 // Spacing
-const drawerWidth = 240;
+const drawerWidth = 200;
 const notificationCenterWidth = 300;
 const MobileBreakpoint = 960;
 

@@ -1,15 +1,15 @@
-﻿import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles} from '@material-ui/core/styles';
-import classNames from 'classnames';
-import WorkspaceStyles from 'styles/Workspace';
+import clsx from 'clsx';
+import WorkspaceStyles from '../../styles/Workspace';
 
 const Workspace = (props) => {
   const { classes, children, opened } = props;
 
   return (
     <main
-      className={classNames(classes.content, classes[`content-left`], {
+      className={clsx(classes.content, classes[`content-left`], {
         [classes.contentShift]: opened,
         [classes[`contentShift-left`]]: opened,
       })}

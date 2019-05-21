@@ -1,7 +1,7 @@
-﻿import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import WrapperStyles from 'styles/Wrapper';
+import WrapperStyles from '../../styles/Wrapper';
 
 const Wrapper = (props) => {
   const { classes, children, padding } = props;
