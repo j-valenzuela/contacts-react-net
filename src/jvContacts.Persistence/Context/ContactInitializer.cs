@@ -1,4 +1,5 @@
 ﻿using jvContacts.Domain.Entities;
+using jvContacts.Domain.ValueObjects;
 using System;
 using System.Linq;
 
@@ -22,46 +23,45 @@ namespace jvContacts.Persistence.Context
         return; 
       }
 
-      var aquaman = new Contact()
-      {
+      var aquaman = new Contact { 
         Id = Guid.NewGuid(),
         FirstName = "Arthur",
         LastName = "Curry",
         Email = "waterboy@atlantis.com",
         ImageUrl = "aquaman.jpg",
-        Address =
+        Address = new ContactAddress
         {
           City = "Atlantis City",
           Street1 = "One Atlantis Way"               
         }
       };
-      var batman = new Contact()
+      var batman = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Bruce",
         LastName = "Wayne",
         Email = "dark.knight@batcave.com",
         ImageUrl = "batman.jpg",
-        Address =
+        Address = new ContactAddress
         {
           City = "Gotham City",
           Street1 = "The Batcave"
         }
       };
-      var black_panther = new Contact()
+      var black_panther = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "King",
         LastName = "T'Challa",
         Email = "blackcat@wakandaforever.com",
         ImageUrl = "black_panther.jpg",
-        Address =
+        Address = new ContactAddress
         {
           City = "Central Wakanda",
           Street1 = "The Royal Palace of Wakanda"
         }
       };
-      var black_widow = new Contact()
+      var black_widow = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Natasha",
@@ -69,7 +69,7 @@ namespace jvContacts.Persistence.Context
         Email = "lethalandsingle@avengers.com",
         ImageUrl = "black_widow.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -79,7 +79,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var captain_america = new Contact()
+      var captain_america = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Steve",
@@ -87,7 +87,7 @@ namespace jvContacts.Persistence.Context
         Email = "thecap@avengers.com",
         ImageUrl = "captain_america.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -97,7 +97,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var captain_marvel = new Contact()
+      var captain_marvel = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Carol",
@@ -105,7 +105,7 @@ namespace jvContacts.Persistence.Context
         Email = "girlpower@avengers.com",
         ImageUrl = "captain_marvel.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -115,21 +115,21 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var cyborg = new Contact()
+      var cyborg = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Victor",
         LastName = "Stone",
         Email = "amarobot@motorcity.com",
         ImageUrl = "cyborg.jpg",        
-        Address =
+        Address = new ContactAddress
         {
           City = "Detroit",                 
           State = "Michigan",
           Country = "United States of America"          
         }
       };
-      var doctor_strange = new Contact()
+      var doctor_strange = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Stephen",
@@ -137,7 +137,7 @@ namespace jvContacts.Persistence.Context
         Email = "magic-cape@avengers.com",
         ImageUrl = "doctor_strange.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -147,7 +147,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var falcon = new Contact()
+      var falcon = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Samuel",
@@ -155,7 +155,7 @@ namespace jvContacts.Persistence.Context
         Email = "mightywings@avengers.com",
         ImageUrl = "falcon.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -165,14 +165,14 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var flash = new Contact()
+      var flash = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Barry",
         LastName = "Allen",
         Email = "speedy@starlabs.com",
         ImageUrl = "flash.jpg",        
-        Address =
+        Address = new ContactAddress
         {
           City = "Central City",
           Street1 = "One Star Labs Way",          
@@ -180,7 +180,7 @@ namespace jvContacts.Persistence.Context
           Country = "United States of America"          
         }
       };
-      var hawkeye = new Contact()
+      var hawkeye = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Clint",
@@ -188,7 +188,7 @@ namespace jvContacts.Persistence.Context
         Email = "brokenarrow@avengers.com",
         ImageUrl = "hawkeye.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -198,7 +198,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var hulk = new Contact()
+      var hulk = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Bruce",
@@ -206,7 +206,7 @@ namespace jvContacts.Persistence.Context
         Email = "smartandgreen@avengers.com",
         ImageUrl = "hulk.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -216,7 +216,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var ironman = new Contact()
+      var ironman = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Tony",
@@ -224,7 +224,7 @@ namespace jvContacts.Persistence.Context
         Email = "tony@starkindustries.com",
         ImageUrl = "ironman.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -234,7 +234,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var scarlet_witch = new Contact()
+      var scarlet_witch = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Wanda",
@@ -242,7 +242,7 @@ namespace jvContacts.Persistence.Context
         Email = "witchgirl@avengers.com",
         ImageUrl = "scarlet_witch.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -252,7 +252,7 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var spiderman = new Contact()
+      var spiderman = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Peter",
@@ -260,7 +260,7 @@ namespace jvContacts.Persistence.Context
         Email = "spidey@avengers.com",
         ImageUrl = "spiderman.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -270,19 +270,19 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var superman = new Contact()
+      var superman = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Clark",
         LastName = "Kent",
         Email = "theman@kryptonlives.com",
         ImageUrl = "superman.jpg",        
-        Address =
+        Address = new ContactAddress
         {
           City = "The North Pole"
         }
       };
-      var thor = new Contact()
+      var thor = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Thor",
@@ -290,7 +290,7 @@ namespace jvContacts.Persistence.Context
         Email = "hammertime@avengers.com",
         ImageUrl = "thor.jpg",
         PhoneNumber = "+18002836437",
-        Address =
+        Address = new ContactAddress
         {
           City = "New York",
           Street1 = "890 Fifth Avenue",
@@ -300,14 +300,14 @@ namespace jvContacts.Persistence.Context
           ZipCode = "10002"
         }
       };
-      var wonder_woman = new Contact()
+      var wonder_woman = new Contact
       {
         Id = Guid.NewGuid(),
         FirstName = "Diana",
         LastName = "Prince",
         Email = "princessDi@amazonsrule.com",
         ImageUrl = "wonder_woman.jpg",        
-        Address =
+        Address = new ContactAddress
         {
           City = "Paradise Island"          
         }

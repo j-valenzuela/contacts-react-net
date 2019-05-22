@@ -9,6 +9,7 @@ namespace jvContacts.Persistence.Extensions
   {
     public static void SetShadowProperties(this ChangeTracker changeTracker, IUser userSession)
     {
+      
       changeTracker.DetectChanges();
 
       var timestamp = DateTime.UtcNow;
@@ -20,13 +21,13 @@ namespace jvContacts.Persistence.Extensions
           if (entry.State == EntityState.Added || entry.State == EntityState.Modified)
           {
             entry.Property("ModifiedOn").CurrentValue = timestamp;
-            entry.Property("ModifiedBy").CurrentValue = userSession.Name;
+            entry.Property("ModifiedBy").CurrentValue = userSession == null ? "webuser" : userSession.Name;
           }
 
           if (entry.State == EntityState.Added)
           {
             entry.Property("CreatedOn").CurrentValue = timestamp;
-            entry.Property("CreatedBy").CurrentValue = userSession.Name;
+            entry.Property("CreatedBy").CurrentValue = userSession == null ? "webuser" : userSession.Name;
           }
         }
 

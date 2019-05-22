@@ -38,8 +38,8 @@ namespace jvContacts.Persistence.Configuration
 
       builder.OwnsOne(a => a.Address).Property(a => a.Street1).HasMaxLength(80)
                .HasColumnName("Street1")
-               .HasColumnType("nvarchar(80)")
-               .IsRequired();
+               .HasColumnType("nvarchar(80)");
+               
 
       builder.OwnsOne(a => a.Address).Property(a => a.Street2).HasMaxLength(80)
                .HasColumnName("Street2")

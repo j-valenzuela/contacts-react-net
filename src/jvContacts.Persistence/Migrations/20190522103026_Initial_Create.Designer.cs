@@ -10,7 +10,7 @@ using jvContacts.Persistence.Context;
 namespace jvContacts.Persistence.Migrations
 {
     [DbContext(typeof(ContactDbContext))]
-    [Migration("20190522093819_Initial_Create")]
+    [Migration("20190522103026_Initial_Create")]
     partial class Initial_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,7 +106,6 @@ namespace jvContacts.Persistence.Migrations
                                 .HasMaxLength(80);
 
                             b1.Property<string>("Street1")
-                                .IsRequired()
                                 .HasColumnName("Street1")
                                 .HasColumnType("nvarchar(80)")
                                 .HasMaxLength(80);

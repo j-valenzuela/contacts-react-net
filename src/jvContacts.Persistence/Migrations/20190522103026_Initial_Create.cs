@@ -17,7 +17,7 @@ namespace jvContacts.Persistence.Migrations
                     LastName = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false, defaultValue: ""),
                     Email = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, defaultValue: ""),
                     PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, defaultValue: ""),
-                    Street1 = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
+                    Street1 = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     Street2 = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     City = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     State = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),

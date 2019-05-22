@@ -104,7 +104,6 @@ namespace jvContacts.Persistence.Migrations
                                 .HasMaxLength(80);
 
                             b1.Property<string>("Street1")
-                                .IsRequired()
                                 .HasColumnName("Street1")
                                 .HasColumnType("nvarchar(80)")
                                 .HasMaxLength(80);
