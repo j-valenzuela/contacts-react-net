@@ -11,24 +11,19 @@ using System.Threading.Tasks;
 
 namespace jvContacts.Persistence.Context
 {
-  public class ContactsDbContext : DbContext, IContactDbContext
+  public class ContactDbContext : DbContext, IContactDbContext
   {
-    private  IUser _userSession;
+    private IUser _userSession;
 
-    public ContactsDbContext(DbContextOptions<ContactsDbContext> options) : base(options)
+    public ContactDbContext(DbContextOptions<ContactDbContext> options) : base(options)
     {
       
     }
 
-    protected ContactsDbContext() : base()
+    public ContactDbContext(DbContextOptions options, IUser userSession) : base(options)
     {
-
+      _userSession = userSession;
     }
-
-    //public ContactsContext(DbContextOptions options, IUser userSession) : base(options)
-    //{
-    //    _userSession = userSession;
-    //}
 
     public DbSet<Contact> Contacts { get; set; }
 
@@ -58,7 +53,7 @@ namespace jvContacts.Persistence.Context
       }
     }
 
-    private static readonly MethodInfo SetGlobalQueryForSoftDeleteMethodInfo = typeof(ContactsDbContext).GetMethods(BindingFlags.Public | BindingFlags.Instance)
+    private static readonly MethodInfo SetGlobalQueryForSoftDeleteMethodInfo = typeof(ContactDbContext).GetMethods(BindingFlags.Public | BindingFlags.Instance)
     .Single(t => t.IsGenericMethod && t.Name == "SetGlobalQueryForSoftDelete");
 
     public void SetGlobalQueryForSoftDelete<T>(ModelBuilder builder) where T : class, ISoftDelete

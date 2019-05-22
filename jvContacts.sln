@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Tests.Unit", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Tests.Integration", "src\jvContacts.Tests.Integration\jvContacts.Tests.Integration.csproj", "{2AA22462-FC46-4614-9C86-886A3A4A27CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Infrastructure", "src\jvContacts.Infrastructure\jvContacts.Infrastructure\jvContacts.Infrastructure.csproj", "{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA22462-FC46-4614-9C86-886A3A4A27CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{23EB9AE3-74D2-46A5-8F82-F234F8531669} = {166F5BF0-851F-469B-8954-FDDA1A9F71DB}
 		{C00CFB75-05E2-4757-A05C-30DA57A48BAA} = {239CFF99-0C33-4B0E-A367-1BA61DA99DE1}
 		{2AA22462-FC46-4614-9C86-886A3A4A27CB} = {239CFF99-0C33-4B0E-A367-1BA61DA99DE1}
+		{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97} = {8D123543-7BBF-46A3-8469-E17EE609D016}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {465FDA73-41E7-442E-B71A-C779CCFF494A}

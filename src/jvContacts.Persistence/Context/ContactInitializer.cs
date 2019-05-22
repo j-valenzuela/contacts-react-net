@@ -1,18 +1,27 @@
 ﻿using jvContacts.Domain.Entities;
 using System;
+using System.Linq;
 
 namespace jvContacts.Persistence.Context
 {
-  public class ContactsDataSeeder
+  public class ContactInitializer
   {
-    private ContactsDbContext context;
-    public ContactsDataSeeder(ContactsDbContext context)
+    public static void Initialize(ContactDbContext context)
     {
-      this.context = context;
+      var initializer = new ContactInitializer();
+      initializer.Seed(context);
     }
 
-    public void Seed()
+    public void Seed(ContactDbContext context)
     {
+      context.Database.EnsureCreated();
+
+      // Check if DB has already been seeded
+      if (context.Contacts.Any())
+      {
+        return; 
+      }
+
       var aquaman = new Contact()
       {
         Id = Guid.NewGuid(),
@@ -308,8 +317,7 @@ namespace jvContacts.Persistence.Context
         captain_america, captain_marvel, cyborg, doctor_strange, falcon, flash, 
         hawkeye, hulk, ironman, scarlet_witch, spiderman, superman, thor, wonder_woman);
 
-      context.SaveChanges();
-      context.Dispose();
+      context.SaveChanges();      
 
     }
   }

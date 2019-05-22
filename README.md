@@ -48,7 +48,7 @@ Visual Studio Code.
 - [x] This version (1.0.0)
     - [x] Contact CRUD with ASP.NET Core API (REST)
     - [x] React client         
-    - [x] DDD (Domain Driven Design) hexagonal architecture       
+    - [x] DDD (Domain Driven Design) with clean architecture       
     - [x] Domain Events
     - [x] CQRS
     - [x] Basic Event Sourcing using SQL Server as event store
@@ -65,14 +65,21 @@ Visual Studio Code.
       - [x] The Country and State fields in the edit contact form do not trigger the pristine flag due to a bug in react-final-form when used with react-autosuggest: https://github.com/final-form/react-final-form/issues/315
       - [x] Image upload is not enabled, so contact profile picture cannot be updated at this moment
 - [ ] Future versions
+    - [ ] Fix known issues. If bug in react-final-form is not resolved, I will need to replace with somethig else.
     - [ ] Authentication with user management
+    - [ ] Support for multiple addresses and phone numbers per contact
     - [ ] Multi-language support (intl)
     - [ ] Health checks
     - [ ] GraphQL API service
     - [ ] More robust Event Sourcing using Marten with PostgreSQL
     - [ ] Replace In-Memory bus with RabbitMQ or Kafka
     - [ ] Multi-tenancy support
-    - [ ] Angular client
-    - [ ] Vue.js client
+    - [ ] Separate API service and UI into separate projects
+    - [ ] Create more client versions:
+      - [ ] Angular client
+      - [ ] Vue.js client
     - [ ] Docker support
-    - [ ] Fix known issues. If bug in react-final-form is not resolved, I will need to replace with somethig else.
+    - [ ] Convert to .NET Core 3.0
+      - [ ] Add column encryption (Always Encrypted)
+      - [ ] Create Blazor version of the UI
+    

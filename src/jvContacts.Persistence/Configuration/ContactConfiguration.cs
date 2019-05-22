@@ -27,7 +27,7 @@ namespace jvContacts.Persistence.Configuration
           .HasDefaultValue("").IsRequired();
 
       builder.Property(c => c.PhoneNumber).HasMaxLength(20)
-         .HasColumnName("Email")
+         .HasColumnName("PhoneNumber")
          .HasColumnType("nvarchar(20)")
          .HasDefaultValue("");
 
@@ -36,33 +36,31 @@ namespace jvContacts.Persistence.Configuration
           .HasColumnType("nvarchar(500)")
           .HasDefaultValue("");
 
-      builder.OwnsOne(c => c.Address, a =>
-      {
-        a.Property(ca => ca.Street1).HasMaxLength(80)
+      builder.OwnsOne(a => a.Address).Property(a => a.Street1).HasMaxLength(80)
                .HasColumnName("Street1")
                .HasColumnType("nvarchar(80)")
                .IsRequired();
 
-        a.Property(ca => ca.Street2).HasMaxLength(80)
+      builder.OwnsOne(a => a.Address).Property(a => a.Street2).HasMaxLength(80)
                .HasColumnName("Street2")
                .HasColumnType("nvarchar(80)");
 
-        a.Property(ca => ca.City).HasMaxLength(80)
+      builder.OwnsOne(a => a.Address).Property(a => a.City).HasMaxLength(80)
                .HasColumnName("City")
                .HasColumnType("nvarchar(80)");
 
-        a.Property(ca => ca.State).HasMaxLength(80)
+      builder.OwnsOne(a => a.Address).Property(a => a.State).HasMaxLength(80)
                .HasColumnName("State")
                .HasColumnType("nvarchar(80)");
 
-        a.Property(ca => ca.Country).HasMaxLength(80)
+      builder.OwnsOne(a => a.Address).Property(a => a.Country).HasMaxLength(80)
                .HasColumnName("Country")
                .HasColumnType("nvarchar(80)");
 
-        a.Property(ca => ca.ZipCode).HasMaxLength(10)
+      builder.OwnsOne(a => a.Address).Property(a => a.ZipCode).HasMaxLength(10)
                .HasColumnName("ZipCode")
                .HasColumnType("nvarchar(10)");
-      });
+      
     }
   }
 }

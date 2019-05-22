@@ -2,9 +2,9 @@
 
 namespace jvContacts.Application.Contacts.Commands.CreateContact
 {
-  public class CreateCustomerCommandValidator : AbstractValidator<CreateContactCommand>
+  public class CreateContactCommandValidator : AbstractValidator<CreateContactCommand>
   {
-    public CreateCustomerCommandValidator()
+    public CreateContactCommandValidator()
     {
       RuleFor(x => x.FirstName).MaximumLength(80).NotEmpty();
       RuleFor(x => x.LastName).MaximumLength(80).NotEmpty();

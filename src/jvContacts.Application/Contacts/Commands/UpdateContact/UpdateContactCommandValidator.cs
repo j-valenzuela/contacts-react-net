@@ -2,9 +2,9 @@
 
 namespace jvContacts.Application.Contacts.Commands.UpdateContact
 {
-  public class UpdateCustomerCommandValidator : AbstractValidator<UpdateContactCommand>
+  public class UpdateContactCommandValidator : AbstractValidator<UpdateContactCommand>
   {
-    public UpdateCustomerCommandValidator()
+    public UpdateContactCommandValidator()
     {
       RuleFor(x => x.FirstName).MaximumLength(80).NotEmpty();
       RuleFor(x => x.LastName).MaximumLength(80).NotEmpty();
