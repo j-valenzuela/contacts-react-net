@@ -1,11 +1,14 @@
 # contacts-react-net (jvContacts)
 Yep, "yet another" contact management React application, but this one shows how to 
-implement React hooks for state management instead of Redux, while leveraging the 
-latest features in .NET Core 2.2 on the backend. 
+implement functional components with React hooks for state management instead of Redux, because Redux + class based components
+are so 2018! Additionally, it leverages the latest features in .NET Core 2.2 on the backend. 
 
 While the application use case is very simple, the intention is to 
 demonstrate how different architecture patterns and design principles can be integrated 
-to support scalability.
+to support scalability. 
+
+**This is a proof of concept for how an enterprise application could be built
+using these technologies. It is not a production-ready application. It uses third party tools that are still in beta**
 
 This demo was created with Visual Studio 2019 (Community), but it can also be used with 
 Visual Studio Code.     
@@ -17,8 +20,7 @@ Visual Studio Code.
 * Command Query Responsibility Segregation (CQRS)
 * Event Sourcing (ES)
 * Test Driven Development (TDD)
-* Functional components using React hooks for state management. Redux + class based components
-are so 2018!
+* Functional components using React hooks for state management
 
 ### Backend Stack
 * ASP.NET Core 2.2 (WebAPI)
@@ -34,7 +36,11 @@ are so 2018!
  
 ### Frontend Stack
 * React 16.8 using hooks for state management
-* Material UI for implementing GUI following Google's Material Design principles
+* Material UI 4.0.0 beta which supports React hooks for implementing Google's Material Design principles
+* Material Table 
+* Final Form for validation and form state management
+* Autosuggest for auto-complete style fields
+* React phone number input and google libphone validation
 * Axios for XMLHttpRequests instead of native browser's Fetch
 * Jest and Enzyme for unit tests 
 
@@ -55,12 +61,18 @@ are so 2018!
     - [x] Logs
     - [x] Code Coverage
     - [x] Continous Integration
+    - [x] **KNOWN ISSUES:** 
+      - [x] The Country and State fields in the edit contact form do not trigger the pristine flag due to a bug in react-final-form when used with react-autosuggest: https://github.com/final-form/react-final-form/issues/315
+      - [x] Image upload is not enabled, so contact profile picture cannot be updated at this moment
 - [ ] Future versions
     - [ ] Authentication with user management
-    - [ ] Multi-tenancy support
     - [ ] Multi-language support (intl)
+    - [ ] Health checks
     - [ ] GraphQL API service
     - [ ] More robust Event Sourcing using Marten with PostgreSQL
+    - [ ] Replace In-Memory bus with RabbitMQ or Kafka
+    - [ ] Multi-tenancy support
     - [ ] Angular client
     - [ ] Vue.js client
-    - [ ] Docker
+    - [ ] Docker support
+    - [ ] Fix known issues. If bug in react-final-form is not resolved, I will need to replace with somethig else.
