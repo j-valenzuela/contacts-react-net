@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -14,10 +15,18 @@ const useStyles = makeStyles({
 });
 
 const Contacts = (props) => {
-
+  const [data, setData] = React.useState([
+    { firstName: "", lastName: "", email: ""}
+  ]);
   const [opened, setOpened] = React.useState(false);
   const [mode, setMode] = React.useState('Editing');
   const [selectedContact, setSelectedContact] = React.useState({});
+
+  React.useEffect(() => {
+    axios.get("/api/contacts/getAll")
+      .then(res => res.data.contacts)       
+      .then(res => setData(res));          
+  }, []);
 
   const openForm = (mode, rowData) => {
     setOpened(true);
@@ -30,22 +39,21 @@ const Contacts = (props) => {
   };
 
   const classes = useStyles();
-
+  
   const columns = [
-    { cellStyle: {width: 40}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={rowData.imageUrl} className={classes.avatar} /> },
-    { cellStyle: {width: 45}, title: 'First Name', field: 'firstname' },
-    { cellStyle: {width: 45}, title: 'Last Name', field: 'lastname' },
+    { title: 'Id' , field: 'id', hidden: true },
+    { cellStyle: {width: 40}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={`/img/${rowData.imageUrl}`} className={classes.avatar} /> },
+    { cellStyle: {width: 45}, title: 'First Name', field: 'firstName' },
+    { cellStyle: {width: 45}, title: 'Last Name', field: 'lastName' },
     { cellStyle: {width: 100}, title: 'Email', field: 'email', },
-    { cellStyle: {width: 180}, title: 'Phone', field: 'phonenumber' },
-    { cellStyle: {width: 180}, title: 'Address', field: 'longaddress' }
-  ];
-
-  const data = [
-    { imageUrl:'/img/aquaman.jpg', firstname: 'Arthur', lastname: 'Curry', email: 'waterboy@atlantis.com', phonenumber: '+1 (800) THE-SEAS', longaddress: 'One Atlantis Way, Atlantis City' },
-    { imageUrl:'/img/batman.jpg', firstname: 'Bruce', lastname: 'Wayne', email: 'DarkKnight@batcave.com', phonenumber: '+1 (800) BAT-CAVE', longaddress: 'The Bat Cave, Gotham City' },
-    { imageUrl:'/img/black_panther.jpg', firstname: 'King', lastname: 'T\'Challa', email: 'BlackKat@wakandaforever.com', phonenumber: '+1 (800) THE-CATS', longaddress: 'One Panther Way, Wakanda' },
-    { imageUrl:'/img/black_widow.jpg', firstname: 'Natasha', lastname: 'Romanova', email: 'LethalGirl@avengers.com', phonenumber: '+1 (800) AVENGER', longaddress: 'Avengers Headquarters, New York City, USA' },
-    { imageUrl:'/img/captain_america.jpg', firstname: 'Steve', lastname: 'Rogers', email: 'TheCap@avengers.com', phonenumber: '+1 (800) AVENGER', longaddress: 'Avengers Headquarters, New York City, USA' }
+    { cellStyle: {width: 50}, title: 'Phone Number', field: 'phoneNumber' },
+    { cellStyle: {width: 200}, title: 'Address', field: 'address.displayAddress' },
+    { title: 'Address', field: 'address.street1', hidden: true },
+    { title: 'Address (cont.)', field: 'address.street2', hidden: true },
+    { title: 'City', field: 'address.city', hidden: true },
+    { title: 'State', field: 'address.state', hidden: true },
+    { title: 'Country', field: 'address.country', hidden: true },
+    { title: 'Postal Code', field: 'address.zipCode', hidden: true }
   ];
 
   const actions = [

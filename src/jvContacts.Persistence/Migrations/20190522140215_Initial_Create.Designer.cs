@@ -10,7 +10,7 @@ using jvContacts.Persistence.Context;
 namespace jvContacts.Persistence.Migrations
 {
     [DbContext(typeof(ContactDbContext))]
-    [Migration("20190522103026_Initial_Create")]
+    [Migration("20190522140215_Initial_Create")]
     partial class Initial_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

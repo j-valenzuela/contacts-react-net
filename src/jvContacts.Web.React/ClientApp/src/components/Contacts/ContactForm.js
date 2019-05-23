@@ -46,23 +46,24 @@ function ContactForm(props) {
   const { classes, opened, mode, data, closeForm } = props;
 
   const initialValues = {
-
-    firstname: !data || !data.rowData || data.rowData.firstname === undefined ? '' : data.rowData.firstname,
-    lastname: !data || !data.rowData || data.rowData.lastname === undefined ? '' : data.rowData.lastname,
+    id: !data || !data.rowData || data.rowData.id === undefined ? '' : data.rowData.id,
+    firstName: !data || !data.rowData || data.rowData.firstName === undefined ? '' : data.rowData.firstName,
+    lastName: !data || !data.rowData || data.rowData.lastName === undefined ? '' : data.rowData.lastName,
     email: !data || !data.rowData || data.rowData.email === undefined ? '' : data.rowData.email,
-    phonenumber: !data || !data.rowData || data.rowData.phone === undefined ? '' : data.rowData.phone,
-    street1: !data || !data.rowData || data.rowData.street1 === undefined ? '' : data.rowData.street1,
-    street2: !data || !data.rowData || data.rowData.street2 === undefined ? '' : data.rowData.street2,
-    city: !data || !data.rowData || data.rowData.city === undefined ? '' : data.rowData.city,
-    zipcode: !data || !data.rowData || data.rowData.zipcode === undefined ? '' : data.rowData.zipcode,
-    country: !data || !data.rowData || data.rowData.country === undefined ? '' : data.rowData.country,
-    state: !data || !data.rowData || data.rowData.state === undefined ? '' : data.rowData.state,
-    imageUrl: !data || !data.rowData || data.rowData.imageUrl === undefined || data.rowData.imageUrl === '' ? '/img/unknown.png' : data.rowData.imageUrl
+    phoneNumber: !data || !data.rowData || data.rowData.phoneNumber === undefined ? '' : data.rowData.phoneNumber,
+    street1: !data || !data.rowData || data.rowData.address.street1 === undefined ? '' : data.rowData.address.street1,
+    street2: !data || !data.rowData || data.rowData.address.street2 === undefined ? '' : data.rowData.address.street2,
+    city: !data || !data.rowData || data.rowData.address.city === undefined ? '' : data.rowData.address.city,
+    zipCode: !data || !data.rowData || data.rowData.address.zipCode === undefined ? '' : data.rowData.address.zipCode,
+    country: !data || !data.rowData || data.rowData.address.country === undefined ? '' : data.rowData.address.country,
+    state: !data || !data.rowData || data.rowData.address.state === undefined ? '' : data.rowData.address.state,
+    imageUrl: !data || !data.rowData || data.rowData.imageUrl === undefined || data.rowData.imageUrl === '' ? '/img/unknown.png' : '/img/' + data.rowData.imageUrl
   };
 
   const [regionList, setRegionList] = React.useState([]);
-  const [selectedCountry, setCountry] = React.useState(initialValues.country);
-  const [selectedRegion, setRegion] = React.useState(initialValues.state);
+  const [selectedCountry, setCountry] = React.useState('');
+  const [selectedRegion, setRegion] = React.useState('');
+
 
   const getCountryNamesAsArray = Object.keys(countryNames).map(isoCode => countryNames[isoCode]);
 
@@ -184,7 +185,7 @@ function ContactForm(props) {
                         <Field
                           fullWidth
                           required
-                          name="firstname"
+                          name="firstName"
                           component={TextField}
                           type="text"
                           label="First Name"
@@ -194,7 +195,7 @@ function ContactForm(props) {
                         <Field
                           required
                           fullWidth
-                          name="lastname"
+                          name="lastName"
                           component={TextField}
                           type="text"
                           label="Last Name"
@@ -212,7 +213,7 @@ function ContactForm(props) {
                       </Grid>
                       <Grid item xs={6}>
                         <Field
-                          name="phonenumber"
+                          name="phoneNumber"
                           component={PhoneFieldWrapper}
                         />
                       </Grid>
@@ -256,7 +257,7 @@ function ContactForm(props) {
                           suggestions={countryList}
                           label="Country"
                           placeholder="Type for a country"
-                          value={selectedCountry}
+                          value={selectedCountry || initialValues.country}
                           onChange={handleChange('country', values)}
                         />
 
@@ -269,13 +270,13 @@ function ContactForm(props) {
                           suggestions={regionList}
                           label="State/Region"
                           placeholder="Type state/region"
-                          value={selectedRegion}
+                          value={selectedRegion || initialValues.state}
                           onChange={handleChange('region', values)}
                         />
                       </Grid>
                       <Grid item xs={3}>
                         <Field
-                          name="zipcode"
+                          name="zipCode"
                           component={TextField}
                           label="Postal Code"
                         />

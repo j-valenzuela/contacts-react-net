@@ -1,5 +1,6 @@
 ﻿using jvContacts.Domain.Infrastructure.ValueObject;
 using System.Collections.Generic;
+using System.Text;
 
 namespace jvContacts.Domain.ValueObjects
 {
@@ -29,6 +30,66 @@ namespace jvContacts.Domain.ValueObjects
 
     public string ZipCode { get; set; }
 
+    public string DisplayAddress
+    {
+      get
+      {
+        var length = 0;
+        var a = new StringBuilder();
+        if (!string.IsNullOrEmpty(Street1))
+        {
+          a.Append(Street1);
+          length += Street1.Length;
+        }
+        if (!string.IsNullOrEmpty(Street2))
+        {
+          if(length > 0)
+          {
+            a.Append(", ");
+          }
+          a.Append(Street2);
+          length += Street2.Length;
+        }
+        if (!string.IsNullOrEmpty(City))
+        {
+          if (length > 0)
+          {
+            a.Append(", ");
+          }
+          a.Append(City);
+          length += City.Length;
+        }
+        if (!string.IsNullOrEmpty(State))
+        {
+          if (length > 0)
+          {
+            a.Append(", ");
+          }
+          a.Append(State);
+          length += State.Length;
+        }
+        if (!string.IsNullOrEmpty(Country))
+        {
+          if (length > 0)
+          {
+            a.Append(", ");
+          }
+          a.Append(Country);
+          length += Country.Length;
+        }
+        if (!string.IsNullOrEmpty(ZipCode))
+        {
+          if (length > 0 )
+          {
+            a.Append(" ");
+          }
+          a.Append(ZipCode);
+        }
+
+        return a.ToString();
+      }
+    }
+
     protected override IEnumerable<object> GetAtomicValues()
     {
       yield return Street1;
@@ -37,6 +98,7 @@ namespace jvContacts.Domain.ValueObjects
       yield return State;
       yield return Country;
       yield return ZipCode;
+      yield return DisplayAddress;
     }
 
   }

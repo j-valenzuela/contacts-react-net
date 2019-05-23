@@ -60,7 +60,9 @@ namespace jvContacts.Persistence.Configuration
       builder.OwnsOne(a => a.Address).Property(a => a.ZipCode).HasMaxLength(10)
                .HasColumnName("ZipCode")
                .HasColumnType("nvarchar(10)");
-      
+
+      builder.OwnsOne(a => a.Address).Ignore(a => a.DisplayAddress);
+
     }
   }
 }
