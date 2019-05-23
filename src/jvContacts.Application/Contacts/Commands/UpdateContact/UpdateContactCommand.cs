@@ -12,7 +12,7 @@ namespace jvContacts.Application.Contacts.Commands.UpdateContact
 {
   public class UpdateContactCommand : IRequest
   {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
@@ -32,14 +32,14 @@ namespace jvContacts.Application.Contacts.Commands.UpdateContact
       public async Task<Unit> Handle(UpdateContactCommand request, CancellationToken cancellationToken)
       {
         var entity = await _context.Contacts
-            .SingleOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+            .SingleOrDefaultAsync(c => c.Id ==  new Guid(request.Id), cancellationToken);
 
         if (entity == null)
         {
           throw new NotFoundException(nameof(Contact), request.Id);
         }
 
-        entity.Id = request.Id;
+        entity.Id = new Guid(request.Id);
         entity.FirstName = request.FirstName;
         entity.LastName = request.LastName;
         entity.Email = request.Email;

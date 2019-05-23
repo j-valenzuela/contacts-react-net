@@ -51,7 +51,7 @@ namespace jvContacts.Web.React
               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateContactCommandValidator>());
 
-      // Customise default API behavour
+      // Customise default API behavior
       services.Configure<ApiBehaviorOptions>(options =>
       {
         options.SuppressModelStateInvalidFilter = true;
@@ -69,7 +69,8 @@ namespace jvContacts.Web.React
     {
       if (env.IsDevelopment())
       {
-        app.UseDeveloperExceptionPage();
+        app.UseDeveloperExceptionPage(); 
+        app.UseDatabaseErrorPage();
       }
       else
       {
@@ -77,7 +78,7 @@ namespace jvContacts.Web.React
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
-
+      
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseSpaStaticFiles();

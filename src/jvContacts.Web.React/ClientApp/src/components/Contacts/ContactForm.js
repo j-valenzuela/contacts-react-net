@@ -7,6 +7,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import countryNames from 'the-country-names/list';
 import PhoneInput from 'react-phone-number-input';
@@ -44,8 +47,9 @@ const styles = theme => ({
 function ContactForm(props) {
 
   const { classes, opened, mode, data, closeForm } = props;
+  const ADDING = mode === 'Adding';
 
-  const initialValues = {
+  const initialValues = {  
     id: !data || !data.rowData || data.rowData.id === undefined ? '' : data.rowData.id,
     firstName: !data || !data.rowData || data.rowData.firstName === undefined ? '' : data.rowData.firstName,
     lastName: !data || !data.rowData || data.rowData.lastName === undefined ? '' : data.rowData.lastName,
@@ -57,7 +61,7 @@ function ContactForm(props) {
     zipCode: !data || !data.rowData || data.rowData.address.zipCode === undefined ? '' : data.rowData.address.zipCode,
     country: !data || !data.rowData || data.rowData.address.country === undefined ? '' : data.rowData.address.country,
     state: !data || !data.rowData || data.rowData.address.state === undefined ? '' : data.rowData.address.state,
-    imageUrl: !data || !data.rowData || data.rowData.imageUrl === undefined || data.rowData.imageUrl === '' ? '/img/unknown.png' : '/img/' + data.rowData.imageUrl
+    imageUrl: !data || !data.rowData || data.rowData.imageUrl === undefined || data.rowData.imageUrl === '' ? 'unknown.png' : data.rowData.imageUrl
   };
 
   const [regionList, setRegionList] = React.useState([]);
@@ -124,6 +128,21 @@ function ContactForm(props) {
     );
   }
 
+  //function convertJSON(obj_from_json) {
+  //  if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)) {
+  //    // not an object, stringify using native function
+  //    return JSON.stringify(obj_from_json);
+  //  }
+  //  // Implements recursive object serialization according to JSON spec
+  //  // but without quotes around the keys.
+  //  let props = Object
+  //    .keys(obj_from_json)
+  //    .map(key => `${key}:${convertJSON(obj_from_json[key])}`)
+  //    .join(",");
+  //  return `{${props}}`;
+  //}
+
+
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
@@ -136,11 +155,69 @@ function ContactForm(props) {
     values.country = selectedCountry;
     values.state = selectedRegion;
 
-    let tmp = document.getElementById('contactForm');
-    console.log("Form: ");
-    console.log(tmp);
+    let axiosOpts = {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    };
 
-    window.alert(JSON.stringify(values, 0, 2));
+    //let command = convertJSON(values);
+
+    if (ADDING) {
+      axios.post(`/api/contacts/create`, values, axiosOpts)
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+          toast.success('Contact saved successfully', {
+            position: "top-right"
+            autoClose: 3000
+            hideProgressBar: false
+            closeOnClick: true
+            pauseOnHover: true
+            draggable: true
+          });  
+          { closeForm }
+        })
+        .catch(error => {
+          // handle error
+          console.log(error);
+          toast.error('Error adding contact', {
+            position: "top-right"
+            autoClose: 5000
+            hideProgressBar: false
+            closeOnClick: true
+            pauseOnHover: true
+            draggable: true
+          });
+        })
+    } else {
+      axios.put(`/api/contacts/update/${values.id}`, values, axiosOpts)
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+          toast.success('Contact saved successfully', {
+            position: "top-right"
+            autoClose: 3000
+            hideProgressBar: false
+            closeOnClick: true
+            pauseOnHover: true
+            draggable: true
+          });
+          { closeForm }
+        })
+        .catch(error => {
+          // handle error
+          console.log(error);
+          toast.error('Error updating contact', {
+            position: "top-right"
+            autoClose: 5000
+            hideProgressBar: false
+            closeOnClick: true
+            pauseOnHover: true
+            draggable: true
+          });
+        })
+    }
   };
 
   const handleChange = (name, values) => (event, { newValue }) => {
@@ -158,11 +235,22 @@ function ContactForm(props) {
 
   return (
     <Fragment>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
       <Form
         onSubmit={onSubmit}
         initialValues={initialValues}
         validate={validateContact}
-        render={({ handleSubmit, submitting, pristine, invalid, values }) => (
+        render={({ handleSubmit, form, submitting, pristine, invalid, values }) => (
           <form id="contactForm" onSubmit={handleSubmit} noValidate>
             <Dialog disableBackdropClick disableEscapeKeyDown
               fullWidth={true}
@@ -177,7 +265,7 @@ function ContactForm(props) {
 
                 <div className={classes.container}>
                   <div className={classes.imageDiv}>
-                    <img src={values.imageUrl} alt={values.imageUrl} className={classes.thumb} />
+                    <img src={`/img/${values.imageUrl}`} alt={values.imageUrl} className={classes.thumb} />
                   </div>
                   <div className={classes.fieldDiv}>
                     <Grid container alignItems="flex-start" spacing={2}>
@@ -289,8 +377,9 @@ function ContactForm(props) {
               <DialogActions>
                 <Button onClick={closeForm} color="primary" >
                   CANCEL
-            </Button>
-                <Button type="submit"
+                </Button>
+                <Button
+                  type="submit"
                   onClick={() =>
                     // { cancelable: true } required for Firefox
                     // https://github.com/facebook/react/issues/12639#issuecomment-382519193
@@ -302,7 +391,7 @@ function ContactForm(props) {
                   variant="contained"
                   color="primary">
                   SAVE
-            </Button>
+                </Button>
               </DialogActions>
             </Dialog>
           </form>

@@ -10,13 +10,17 @@ namespace jvContacts.Application.Contacts.Commands.CreateContact
 {
   public class CreateContactCommand : IRequest
   {
-    public Guid Id { get; set; }
-
+   
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
-    public ContactAddress Address { get; set; }
+    public string Street1 { get; set; }
+    public string Street2 { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string Country { get; set; }
+    public string ZipCode { get; set; }
     public string ImageUrl { get; set; }
 
     public class Handler : IRequestHandler<CreateContactCommand, Unit>
@@ -34,11 +38,19 @@ namespace jvContacts.Application.Contacts.Commands.CreateContact
       {
         var entity = new Contact
         {
-          Id = request.Id,
+          // In Create the ID always comes blank so we need to create a new one
+          Id = new Guid(),
           FirstName = request.FirstName,
           LastName = request.LastName,
           Email = request.Email,
-          Address = request.Address,
+          Address = new ContactAddress {
+            Street1 = request.Street1,
+            Street2 = request.Street2,
+            City = request.City,
+            State = request.State,
+            Country = request.Country,
+            ZipCode = request.ZipCode
+          },
           PhoneNumber = request.PhoneNumber,
           ImageUrl = request.ImageUrl          
         };

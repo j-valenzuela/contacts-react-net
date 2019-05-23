@@ -42,12 +42,12 @@ const Contacts = (props) => {
   
   const columns = [
     { title: 'Id' , field: 'id', hidden: true },
-    { cellStyle: {width: 40}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={`/img/${rowData.imageUrl}`} className={classes.avatar} /> },
-    { cellStyle: {width: 45}, title: 'First Name', field: 'firstName' },
-    { cellStyle: {width: 45}, title: 'Last Name', field: 'lastName' },
-    { cellStyle: {width: 100}, title: 'Email', field: 'email', },
-    { cellStyle: {width: 50}, title: 'Phone Number', field: 'phoneNumber' },
-    { cellStyle: {width: 200}, title: 'Address', field: 'address.displayAddress' },
+    { cellStyle: {width: 10}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={`/img/${rowData.imageUrl}`} className={classes.avatar} /> },
+    { cellStyle: {width: 15}, title: 'First Name', field: 'firstName' },
+    { cellStyle: {width: 15}, title: 'Last Name', field: 'lastName' },
+    { cellStyle: {width: 20}, title: 'Email', field: 'email', },
+    { cellStyle: {width: 20}, title: 'Phone Number', field: 'phoneNumber' },
+    { cellStyle: {width: 100}, title: 'Address', field: 'address.displayAddress' },
     { title: 'Address', field: 'address.street1', hidden: true },
     { title: 'Address (cont.)', field: 'address.street2', hidden: true },
     { title: 'City', field: 'address.city', hidden: true },
