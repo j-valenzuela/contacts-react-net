@@ -37,7 +37,6 @@ using these technologies. It is not a production-ready application. It uses thir
 * React phone number input and google libphone validation
 * Axios for XMLHttpRequests instead of native browser's Fetch
 * React Toastify
-* Jest and Enzyme for unit tests 
 
 ## Roadmap
 - [x] This version (1.0.0)
@@ -54,14 +53,16 @@ using these technologies. It is not a production-ready application. It uses thir
     - [x] Automatic database creation
     - [x] Seed database data
     - [x] EF Migrations
-    - [x] Unit Tests
+    - [x] Backend Unit Tests with xUnit
     - [x] Integration Tests    
     - [x] **KNOWN ISSUES:** 
       - [x] The Country and State fields in the edit contact form do not trigger the pristine flag due to a bug in react-final-form when used with react-autosuggest: https://github.com/final-form/react-final-form/issues/315
       - [x] Image upload is not enabled, so contact profile picture cannot be updated at this moment
-- [ ] Future versions
+- [ ] Future versions 
+    - [ ] Client side testing using Jest and Enzyme (coming soon) 
     - [ ] Fix known issues. Replace react-final-form with Formik
     - [ ] Authentication with user management
+    - [ ] Live Demo and CI
     - [ ] Support for multiple addresses and phone numbers per contact
     - [ ] Multi-language support (intl)
     - [ ] Health checks
