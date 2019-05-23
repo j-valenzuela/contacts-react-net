@@ -27,16 +27,20 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Persistence", "src\jvContacts.Persistence\jvContacts.Persistence.csproj", "{7FDC58A9-4392-4711-82B5-D52A272F2A52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{ABF686FA-5860-4EBF-AB48-9F65B68641AB}"
+	ProjectSection(SolutionItems) = preProject
+		database\01 - Create Database.sql = database\01 - Create Database.sql
+		database\02 - Data Seed.sql = database\02 - Data Seed.sql
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Web.React", "src\jvContacts.Web.React\jvContacts.Web.React.csproj", "{23EB9AE3-74D2-46A5-8F82-F234F8531669}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Infrastructure", "src\jvContacts.Infrastructure\jvContacts.Infrastructure\jvContacts.Infrastructure.csproj", "{8C8BA12A-8628-4DCD-8DA1-9E227B36DD97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Application.Tests", "src\jvContacts.Application.Tests\jvContacts.Application.Tests.csproj", "{B1D946A3-CFCA-4240-A881-6BDF9119EF43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Application.Tests", "src\jvContacts.Application.Tests\jvContacts.Application.Tests.csproj", "{B1D946A3-CFCA-4240-A881-6BDF9119EF43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Domain.Tests", "src\jvContacts.Domain.Tests\jvContacts.Domain.Tests.csproj", "{CAB9A365-5B89-4380-97FF-DCC50C66B60E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Domain.Tests", "src\jvContacts.Domain.Tests\jvContacts.Domain.Tests.csproj", "{CAB9A365-5B89-4380-97FF-DCC50C66B60E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jvContacts.Api.Functional.Tests", "src\jvContacts.Api.Functional.Tests\jvContacts.Api.Functional.Tests.csproj", "{B9371F83-28EC-4626-A6C4-2B946B844E78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jvContacts.Api.Functional.Tests", "src\jvContacts.Api.Functional.Tests\jvContacts.Api.Functional.Tests.csproj", "{B9371F83-28EC-4626-A6C4-2B946B844E78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
