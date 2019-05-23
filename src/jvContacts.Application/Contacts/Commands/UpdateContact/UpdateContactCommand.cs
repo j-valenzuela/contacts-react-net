@@ -17,7 +17,12 @@ namespace jvContacts.Application.Contacts.Commands.UpdateContact
     public string LastName { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
-    public ContactAddress Address { get; set; }
+    public string Street1 { get; set; }
+    public string Street2 { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string Country { get; set; }
+    public string ZipCode { get; set; }
     public string ImageUrl { get; set; }
 
     public class Handler : IRequestHandler<UpdateContactCommand, Unit>
@@ -43,7 +48,15 @@ namespace jvContacts.Application.Contacts.Commands.UpdateContact
         entity.FirstName = request.FirstName;
         entity.LastName = request.LastName;
         entity.Email = request.Email;
-        entity.Address = request.Address;
+        entity.Address = new ContactAddress
+        {
+          Street1 = request.Street1,
+          Street2 = request.Street2,
+          City = request.City,
+          State = request.State,
+          Country = request.Country,
+          ZipCode = request.ZipCode
+        };
         entity.PhoneNumber = request.PhoneNumber;
         entity.ImageUrl = request.ImageUrl;
 

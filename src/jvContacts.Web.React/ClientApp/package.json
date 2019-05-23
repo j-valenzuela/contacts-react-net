@@ -24,6 +24,7 @@
     "react-scripts": "3.0.1",
     "react-toastify": "^5.1.1",
     "rimraf": "^2.6.3",
+    "sweetalert2": "^8.11.4",
     "the-country-names": "^2.2.0"
   },
   "devDependencies": {

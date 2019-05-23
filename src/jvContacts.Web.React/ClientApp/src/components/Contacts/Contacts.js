@@ -5,6 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Wrapper from '../Wrapper/Wrapper';
 import ContactForm from './ContactForm';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import Swal from 'sweetalert2';
 
 const useStyles = makeStyles({
   avatar: {
@@ -23,10 +26,16 @@ const Contacts = (props) => {
   const [selectedContact, setSelectedContact] = React.useState({});
 
   React.useEffect(() => {
-    axios.get("/api/contacts/getAll")
-      .then(res => res.data.contacts)       
-      .then(res => setData(res));          
+    loadTable();         
   }, []);
+
+  const loadTable = () => {
+
+    axios.get("/api/contacts/getAll")
+      .then(res => res.data.contacts)
+      .then(res => setData(res));
+
+  };
 
   const openForm = (mode, rowData) => {
     setOpened(true);
@@ -36,6 +45,52 @@ const Contacts = (props) => {
 
   const closeForm = () => {
     setOpened(false);
+  };
+
+  const axiosOpts = {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    }
+  };
+  const deleteContact = (data) => {
+    Swal.fire({
+      title: `Are you sure you want to delete ${data.firstName} ${data.lastName}?`,
+      text: "Please confirm",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#aaa',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        axios.delete(`/api/contacts/delete/${data.id}`, axiosOpts)
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+            toast.success('Contact has been deleted', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true
+            }); 
+            loadTable();
+          })
+          .catch(error => {
+            // handle error
+            console.log(error);
+            toast.error('Error deleting contact', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true
+            });
+          })        
+      }
+    })
   };
 
   const classes = useStyles();
@@ -59,15 +114,15 @@ const Contacts = (props) => {
   const actions = [
     {
       icon: 'edit',
-      iconProps: {color: 'action' },
+      iconProps: { color: 'action' },
       tooltip: 'Edi Contact',
-      onClick: (event, rowData) => openForm('Editing', {rowData})
+      onClick: (event, rowData) => openForm('Editing', { rowData })
     },
     {
       icon: 'delete',
       iconProps: { color: 'action' },
       tooltip: 'Delete Contact',
-      onClick: (event, rowData) => alert("delete")
+      onClick: (event, rowData) => deleteContact(rowData)
     },
     {
       icon: 'add',
@@ -83,19 +138,31 @@ const Contacts = (props) => {
 
   return (
     <Wrapper>
-        <MaterialTable
-          title="Contacts"
-          columns={columns}
-          data={data}
-          actions={actions}
-          options={options}
-        />
-        <ContactForm
-          opened={opened}
-          mode={mode}
-          data={selectedContact}
-          closeForm={closeForm}
-        />
+      <MaterialTable
+        title="Contacts"        
+        columns={columns}
+        data={data}
+        actions={actions}
+        options={options}
+      />
+      <ContactForm
+        opened={opened}
+        mode={mode}
+        data={selectedContact}
+        closeForm={closeForm}
+        loadTable={loadTable}
+      />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
     </Wrapper>
   );
 };

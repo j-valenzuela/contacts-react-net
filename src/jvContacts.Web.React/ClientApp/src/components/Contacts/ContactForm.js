@@ -46,7 +46,7 @@ const styles = theme => ({
 
 function ContactForm(props) {
 
-  const { classes, opened, mode, data, closeForm } = props;
+  const { classes, opened, mode, data, closeForm, loadTable } = props;
   const ADDING = mode === 'Adding';
 
   const initialValues = {  
@@ -128,24 +128,9 @@ function ContactForm(props) {
     );
   }
 
-  //function convertJSON(obj_from_json) {
-  //  if (typeof obj_from_json !== "object" || Array.isArray(obj_from_json)) {
-  //    // not an object, stringify using native function
-  //    return JSON.stringify(obj_from_json);
-  //  }
-  //  // Implements recursive object serialization according to JSON spec
-  //  // but without quotes around the keys.
-  //  let props = Object
-  //    .keys(obj_from_json)
-  //    .map(key => `${key}:${convertJSON(obj_from_json[key])}`)
-  //    .join(",");
-  //  return `{${props}}`;
-  //}
-
-
   const onSubmit = async values => {
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-    await sleep(300);
+    //const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    //await sleep(300);
     // HACK: There is a bug in final-form when using react-autosuggest
     // as explained here https://github.com/final-form/react-final-form/issues/315
     // The side-effect is that the Country and State autosuggest controls
@@ -161,33 +146,32 @@ function ContactForm(props) {
       }
     };
 
-    //let command = convertJSON(values);
-
     if (ADDING) {
       axios.post(`/api/contacts/create`, values, axiosOpts)
         .then(res => {
           console.log(res);
           console.log(res.data);
           toast.success('Contact saved successfully', {
-            position: "top-right"
-            autoClose: 3000
-            hideProgressBar: false
-            closeOnClick: true
-            pauseOnHover: true
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
             draggable: true
-          });  
-          { closeForm }
+          });
+          loadTable();
+          closeForm();
         })
         .catch(error => {
           // handle error
           console.log(error);
           toast.error('Error adding contact', {
-            position: "top-right"
-            autoClose: 5000
-            hideProgressBar: false
-            closeOnClick: true
-            pauseOnHover: true
-            draggable: true
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
           });
         })
     } else {
@@ -196,24 +180,25 @@ function ContactForm(props) {
           console.log(res);
           console.log(res.data);
           toast.success('Contact saved successfully', {
-            position: "top-right"
-            autoClose: 3000
-            hideProgressBar: false
-            closeOnClick: true
-            pauseOnHover: true
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
             draggable: true
           });
-          { closeForm }
+          loadTable();
+          closeForm();
         })
         .catch(error => {
           // handle error
           console.log(error);
           toast.error('Error updating contact', {
-            position: "top-right"
-            autoClose: 5000
-            hideProgressBar: false
-            closeOnClick: true
-            pauseOnHover: true
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
             draggable: true
           });
         })
@@ -402,6 +387,8 @@ function ContactForm(props) {
 }
 ContactForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  loadTable: PropTypes.func,
+  closeForm: PropTypes.func
 };
 
 export default withStyles(styles)(ContactForm);
