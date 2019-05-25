@@ -1,3 +1,4 @@
+[![Build Status](https://juanstuff.visualstudio.com/jvContacts/_apis/build/status/j-valenzuela.contacts-react-net?branchName=master)](https://juanstuff.visualstudio.com/jvContacts/_build/latest?definitionId=1&branchName=master)
 # contacts-react-net (jvContacts)
 Yep, "yet another" contact management React application, but this one shows how to 
 implement functional components with React hooks for state management instead of Redux, because Redux + class based components
