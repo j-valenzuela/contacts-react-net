@@ -9,7 +9,7 @@ to support scalability.
 
 ### Prerequisites
 You will need the following tools:
-* [NodeJS](https://nodejs.org/en/) with the latest version of the NPM package manager. For better experience, I recommendusing [https://yarnpkg.com/en/](yarn) 
+* [NodeJS](https://nodejs.org/en/) with the latest version of the NPM package manager. For better experience, I recommend using [https://yarnpkg.com/en/](yarn) 
 * [Visual Studio 2017/2019 or Visual Studio Code](https://www.visualstudio.com/downloads/)
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2)
 * [SQL Server 2017 Express with or without LocalDb](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express)
