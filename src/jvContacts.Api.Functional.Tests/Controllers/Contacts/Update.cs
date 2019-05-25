@@ -25,21 +25,18 @@ namespace jvContacts.Api.Functional.Tests.Controllers.Contacts
       // Update Ironman
       var command = new UpdateContactCommand
       {
-        Id = new Guid("7323501c-3656-44f5-87a3-6bd61e3237de"),
+        Id = "7323501c-3656-44f5-87a3-6bd61e3237de",
         FirstName = "Tony",
         LastName = "Stark",
         Email = "tony@starkindustries.com",
         ImageUrl = "ironman.jpg",
         PhoneNumber = "+18002836437",
-        Address = new ContactAddress
-        {
-          City = "New York",
-          Street1 = "890 Fifth Avenue",
-          Street2 = "Borough of Manhattan",
-          State = "New York",
-          Country = "United States",
-          ZipCode = "10002"
-        }
+        City = "New York",
+        Street1 = "890 Fifth Avenue",
+        Street2 = "Borough of Manhattan",
+        State = "New York",
+        Country = "United States",
+        ZipCode = "10002"        
       };
 
       var content = Utilities.GetRequestContent(command);
@@ -55,21 +52,18 @@ namespace jvContacts.Api.Functional.Tests.Controllers.Contacts
     {
       var invalidCommand = new UpdateContactCommand
       {
-        Id = new System.Guid("8e7c209e-48b9-4aca-84d5-196b4a527098"),
+        Id = "8e7c209e-48b9-4aca-84d5-196b4a527098",
         FirstName = "Juan",
         LastName = "Valenzuela",
         Email = "abc@def.com",
         ImageUrl = "juan.jpg",
-        PhoneNumber = "+11234567890",
-        Address = new Domain.ValueObjects.ContactAddress
-        {
-          Street1 = "1234 E Main St",
-          Street2 = "",
-          City = "Scottsdale",
-          State = "Arizona",
-          Country = "United States",
-          ZipCode = "12345"
-        }
+        PhoneNumber = "+11234567890",        
+        Street1 = "1234 E Main St",
+        Street2 = "",
+        City = "Scottsdale",
+        State = "Arizona",
+        Country = "United States",
+        ZipCode = "12345"        
       };
 
       var content = Utilities.GetRequestContent(invalidCommand);
