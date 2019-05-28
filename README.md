@@ -88,6 +88,7 @@ using these technologies. It is not a production-ready application. It uses thir
 * React phone number input and google libphone validation
 * Axios for XMLHttpRequests instead of native browser's Fetch
 * React Toastify
+* SweetAlert 2
 
 ## Roadmap
 - [x] This version (1.0.0)

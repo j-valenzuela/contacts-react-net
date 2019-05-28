@@ -7,15 +7,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
-
 import countryNames from 'the-country-names/list';
 import PhoneInput from 'react-phone-number-input';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
 
+import ContactService from '../../services/ContactService';
+import { Ui } from '../../utils/Ui';
 import { validateContact, validatePhoneNumber } from './validateContact';
 import CustomAutoSuggest from './CustomAutoSuggest';
 
@@ -49,7 +47,7 @@ function ContactForm(props) {
   const { classes, opened, mode, data, closeForm, loadTable } = props;
   const ADDING = mode === 'Adding';
 
-  const initialValues = {  
+  const initialValues = {
     id: !data || !data.rowData || data.rowData.id === undefined ? '' : data.rowData.id,
     firstName: !data || !data.rowData || data.rowData.firstName === undefined ? '' : data.rowData.firstName,
     lastName: !data || !data.rowData || data.rowData.lastName === undefined ? '' : data.rowData.lastName,
@@ -98,7 +96,6 @@ function ContactForm(props) {
     }
   }
 
-
   function PhoneFieldWrapper(props) {
     const {
       input: { name, onChange, value },
@@ -129,8 +126,6 @@ function ContactForm(props) {
   }
 
   const onSubmit = async values => {
-    //const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-    //await sleep(300);
     // HACK: There is a bug in final-form when using react-autosuggest
     // as explained here https://github.com/final-form/react-final-form/issues/315
     // The side-effect is that the Country and State autosuggest controls
@@ -140,68 +135,24 @@ function ContactForm(props) {
     values.country = selectedCountry;
     values.state = selectedRegion;
 
-    let axiosOpts = {
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    };
-
     if (ADDING) {
-      axios.post(`/api/contacts/create`, values, axiosOpts)
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-          toast.success('Contact saved successfully', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true
-          });
-          loadTable();
-          closeForm();
-        })
-        .catch(error => {
-          // handle error
-          console.log(error);
-          toast.error('Error adding contact', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-          });
-        })
+      let result = await ContactService.add(values);
+      if (result.hasErrors){
+        Ui.showErrors(result.errors);
+      } else {
+        Ui.showSuccess('Contact added successfully');
+        loadTable();
+        closeForm();
+      }
     } else {
-      axios.put(`/api/contacts/update/${values.id}`, values, axiosOpts)
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-          toast.success('Contact saved successfully', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true
-          });
-          loadTable();
-          closeForm();
-        })
-        .catch(error => {
-          // handle error
-          console.log(error);
-          toast.error('Error updating contact', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true
-          });
-        })
+      let result = await ContactService.update(values);
+      if (result.hasErrors) {
+        Ui.showErrors(result.errors);
+      } else {
+        Ui.showSuccess('Contact updated successfully');
+        loadTable();
+        closeForm();
+      }
     }
   };
 
@@ -220,17 +171,6 @@ function ContactForm(props) {
 
   return (
     <Fragment>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-      />
       <Form
         onSubmit={onSubmit}
         initialValues={initialValues}

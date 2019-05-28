@@ -7,11 +7,13 @@ import { withStyles } from '@material-ui/core/styles';
 import LayoutStyles from '../../styles/Layout';
 import { MobileBreakpoint } from '../../styles/variables';
 import routes from '../routes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Workspace from '../Workspace/Workspace';
 import Header from '../Header/Header';
-import Sidebar from '../Sidebar/Sidebar'; 
-import Footer from '../Footer/Footer';  
+import Sidebar from '../Sidebar/Sidebar';
+import Footer from '../Footer/Footer';
 
 function resizeDispatch() {
     if (typeof (Event) === 'function') {
@@ -30,14 +32,14 @@ const Layout = props => {
 
     let mediaMatcher = matchMedia(`(max-width: ${MobileBreakpoint}px)`);
 
-    const handleDrawerToggle = () => {        
+    const handleDrawerToggle = () => {
         setOpened(!opened);
         resizeDispatch();
     }
 
     useEffect(
         () => {
-            if (mediaMatcher.matches){ 
+            if (mediaMatcher.matches){
                 setOpened(false);
             }
 
@@ -73,7 +75,7 @@ const Layout = props => {
     );
     const getRoutes = (
         <Switch>
-            {routes.items.map((item, index) => (                   
+            {routes.items.map((item, index) => (
                     item.type === 'submenu' ? item.children.map(subItem => <Route exact path={`${subItem.path}`} component={subItem.component} name={subItem.name} />) :
                         <Route exact path={item.path} component={item.component} name={item.name} key={index} />
             ))}
@@ -85,22 +87,33 @@ const Layout = props => {
         <Fragment>
             <CssBaseline />
             <Header
-                toggleDrawer={handleDrawerToggle}                    
+                toggleDrawer={handleDrawerToggle}
             />
-            
+
             <div className={clsx(classes.panel)}>
                 <Sidebar
                     routes={routes.items}
                     opened={opened}
                     toggleDrawer={handleDrawerToggle}
-                />                    
+                />
                 <Workspace opened={opened}>
-                    {getRoutes}                        
-                </Workspace>                                       
+                    {getRoutes}
+                </Workspace>
             </div>
 
             <Footer />
-            
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnVisibilityChange
+                draggable
+                pauseOnHover
+            />
+
         </Fragment>
     );
 }

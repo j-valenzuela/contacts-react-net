@@ -1,13 +1,13 @@
 import React from 'react'
-import axios from 'axios';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Wrapper from '../Wrapper/Wrapper';
-import ContactForm from './ContactForm';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import Swal from 'sweetalert2';
+
+import ContactService from '../../services/ContactService';
+import ContactForm from './ContactForm';
+import { Ui } from '../../utils/Ui';
 
 const useStyles = makeStyles({
   avatar: {
@@ -26,15 +26,14 @@ const Contacts = (props) => {
   const [selectedContact, setSelectedContact] = React.useState({});
 
   React.useEffect(() => {
-    loadTable();         
+    loadTable();
   }, []);
 
-  const loadTable = () => {
-
-    axios.get("/api/contacts/getAll")
-      .then(res => res.data.contacts)
-      .then(res => setData(res));
-
+  async function loadTable() {
+    let result = await ContactService.list();
+    if (result && result.data) {
+      setData(result.data);
+    }
   };
 
   const openForm = (mode, rowData) => {
@@ -47,11 +46,6 @@ const Contacts = (props) => {
     setOpened(false);
   };
 
-  const axiosOpts = {
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8'
-    }
-  };
   const deleteContact = (data) => {
     Swal.fire({
       title: `Are you sure you want to delete ${data.firstName} ${data.lastName}?`,
@@ -61,40 +55,22 @@ const Contacts = (props) => {
       confirmButtonColor: '#d33',
       cancelButtonColor: '#aaa',
       confirmButtonText: 'Yes'
-    }).then((result) => {
+    }).then( async function (result) {
       if (result.value) {
-        axios.delete(`/api/contacts/delete/${data.id}`, axiosOpts)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-            toast.success('Contact has been deleted', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true
-            }); 
-            loadTable();
-          })
-          .catch(error => {
-            // handle error
-            console.log(error);
-            toast.error('Error deleting contact', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true
-            });
-          })        
+        let result = await ContactService.delete(data.id);
+        if (result.hasErrors){
+          Ui.showErrors('Error deleting contact');
+        }
+        else{
+          Ui.showSuccess('Contact has been deleted');
+          loadTable();
+        }
       }
     })
   };
 
   const classes = useStyles();
-  
+
   const columns = [
     { title: 'Id' , field: 'id', hidden: true },
     { cellStyle: {width: 10}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={`/img/${rowData.imageUrl}`} className={classes.avatar} /> },
@@ -139,7 +115,7 @@ const Contacts = (props) => {
   return (
     <Wrapper>
       <MaterialTable
-        title="Contacts"        
+        title="Contacts"
         columns={columns}
         data={data}
         actions={actions}
@@ -152,17 +128,7 @@ const Contacts = (props) => {
         closeForm={closeForm}
         loadTable={loadTable}
       />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-      />
+
     </Wrapper>
   );
 };
