@@ -22,7 +22,7 @@ const Sidebar = props => {
     }
 
     const { classes, opened, toggleDrawer , routes, location } = props;
-    
+
     const menu = (
       <List component="div">
         { routes.map((route, index) => {
@@ -44,6 +44,7 @@ const Sidebar = props => {
       <Fragment>
         <Hidden smDown>
           <Drawer
+            data-testid="sidebar"
             variant="persistent"
             classes={{
               paper: classes.drawerPaper,
@@ -63,6 +64,7 @@ const Sidebar = props => {
         </Hidden>
         <Hidden mdUp>
           <SwipeableDrawer
+            data-testid="sidebar"
             variant="temporary"
             classes={{
               paper: classes.drawerPaper,

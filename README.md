@@ -91,7 +91,7 @@ using these technologies. It is not a production-ready application. It uses thir
 * SweetAlert 2
 
 ## Roadmap
-- [x] This version (1.0.0)
+- [x] This version (1.0.1)
     - [x] Contact CRUD with ASP.NET Core API (REST)
     - [x] Entity Framework 2.2 features:
       - [x] Migrations 
@@ -106,13 +106,13 @@ using these technologies. It is not a production-ready application. It uses thir
     - [x] Seed database data
     - [x] EF Migrations
     - [x] Backend Unit Tests with xUnit
-    - [x] Integration Tests    
+    - [x] Integration Tests
+    - [x] Client side testing using Jest and react-testing-library (RTL)     
     - [x] **KNOWN ISSUES:** 
       - [x] The Country and State fields in the edit contact form do not trigger the pristine flag due to a bug in react-final-form when used with react-autosuggest: https://github.com/final-form/react-final-form/issues/315
       - [x] Image upload is not enabled, so contact profile picture cannot be updated at this moment
       - [x] Duplicate contacts are allowed. The app is not validating for that. 
 - [ ] Future versions 
-    - [ ] Client side testing using Jest and Enzyme (coming soon) 
     - [ ] Fix known issues. Replace react-final-form with Formik
     - [ ] Authentication with user management
     - [ ] Live Demo and CI

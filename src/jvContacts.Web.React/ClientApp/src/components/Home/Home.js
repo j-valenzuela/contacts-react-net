@@ -8,10 +8,10 @@ function Home() {
     return (
         <Wrapper>
             <Card>
-                <CardContent>
+                <CardContent data-testid="home">
                     <Typography variant="h4" gutterBottom className="font-weight-bold">jvContacts - Demo</Typography>
                     <Typography component={'span'} variant="body1">
-                        This demo was developed as a proof of concept for integrating multiple trending technologies. 
+                        This demo was developed as a proof of concept for integrating multiple trending technologies.
                         In the frontend it uses:
                     </Typography>
                     <Typography component={'span'} variant="body1">
@@ -19,7 +19,7 @@ function Home() {
                             <li>React with hooks for state management and functional components</li>
                             <li>Material UI (version 4.0.0-beta2 with support for hooks)</li>
                             <li>Material Table (<a href="https://material-table.com/#/" target="_blank" rel="noopener noreferrer"> website</a>)</li>
-                            <li>JSS (CSS via JS) included with Material UI</li>                            
+                            <li>JSS (CSS via JS) included with Material UI</li>
                             <li>Responsive design</li>
                             <li>WCAG 2.0 compliance</li>
                             <li>Unit testing with Jest and Enzyme</li>
@@ -39,7 +39,7 @@ function Home() {
                                     <li>In-Memory driver for unit testing</li>
                                 </ul>
                             </li>
-                            <li>SQL Server 2017 Express</li>                            
+                            <li>SQL Server 2017 Express</li>
                             <li>Domain Driven Design (DDD)</li>
                             <li>Command Query Responsibility Segregation (CQRS)</li>
                             <li>Unit testing with xUnit</li>

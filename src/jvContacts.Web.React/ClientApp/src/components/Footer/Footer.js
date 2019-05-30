@@ -7,15 +7,15 @@ const Footer = props => {
     const { classes } = props;
     return (
         <Fragment>
-            <footer className={classes.appFooter}>
+            <footer className={classes.appFooter} data-testid="footer">
                 <span className={classes.inlineBlock}>Copyright Juan Valenzuela &copy; 2019</span>
             </footer>
         </Fragment>
-    );   
+    );
 };
 
 Footer.prototypes = {
     classes: PropTypes.object.isRequired
   };
-  
+
 export default withStyles(FooterStyles)(Footer);

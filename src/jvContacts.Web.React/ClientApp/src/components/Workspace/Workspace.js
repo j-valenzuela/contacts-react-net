@@ -9,6 +9,7 @@ const Workspace = (props) => {
 
   return (
     <main
+      data-testid="workspace"
       className={clsx(classes.content, classes[`content-left`], {
         [classes.contentShift]: opened,
         [classes[`contentShift-left`]]: opened,

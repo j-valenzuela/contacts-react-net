@@ -9,27 +9,28 @@ import Typography from '@material-ui/core/Typography';
 import HeaderStyles from '../../styles/Header';
 
 const Header = props => {
-  
+
   const { classes, toggleDrawer } = props;
 
   return (
 
-    <AppBar
+    <AppBar data-testid="header"
       position="static"
       className={classes.appBar}>
       <Toolbar className={classes.toolBar}>
         <IconButton
+          data-testid="menu"
           color="inherit"
           aria-label="Menu"
           onClick={toggleDrawer}
         >
           <MenuIcon />
-        </IconButton>       
+        </IconButton>
         <Typography variant="h6" color="inherit" style={{ flex: 1 }}>
           jvContacts
-        </Typography>          
-        <div className={classes.ellipseShape}></div>                                             
-      </Toolbar>     
+        </Typography>
+        <div className={classes.ellipseShape}></div>
+      </Toolbar>
     </AppBar>
   );
 }

@@ -73,7 +73,7 @@ const Contacts = (props) => {
 
   const columns = [
     { title: 'Id' , field: 'id', hidden: true },
-    { cellStyle: {width: 10}, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={`/img/${rowData.imageUrl}`} className={classes.avatar} /> },
+    { cellStyle: { width: 10 }, title: 'Photo', field: 'imageUrl', render: rowData => <Avatar alt='avatar' src={rowData && rowData.imageUrl ? `/img/${rowData.imageUrl}` : '/img/unknown.png'} className={classes.avatar} /> },
     { cellStyle: {width: 15}, title: 'First Name', field: 'firstName' },
     { cellStyle: {width: 15}, title: 'Last Name', field: 'lastName' },
     { cellStyle: {width: 20}, title: 'Email', field: 'email', },

@@ -176,7 +176,7 @@ function ContactForm(props) {
         initialValues={initialValues}
         validate={validateContact}
         render={({ handleSubmit, form, submitting, pristine, invalid, values }) => (
-          <form id="contactForm" onSubmit={handleSubmit} noValidate>
+          <form id="contactForm" data-testid="contactForm" onSubmit={handleSubmit} noValidate>
             <Dialog disableBackdropClick disableEscapeKeyDown
               fullWidth={true}
               maxWidth={'md'}
@@ -202,6 +202,7 @@ function ContactForm(props) {
                           component={TextField}
                           type="text"
                           label="First Name"
+                          data-testid="firstName"
                         />
                       </Grid>
                       <Grid item xs={6}>
@@ -212,6 +213,7 @@ function ContactForm(props) {
                           component={TextField}
                           type="text"
                           label="Last Name"
+                          data-testid="lastName"
                         />
                       </Grid>
                       <Grid item xs={6}>
@@ -222,6 +224,7 @@ function ContactForm(props) {
                           component={TextField}
                           type="email"
                           label="Email"
+                          data-testid="email"
                         />
                       </Grid>
                       <Grid item xs={6}>
@@ -312,6 +315,7 @@ function ContactForm(props) {
                       .getElementById('contactForm')
                       .dispatchEvent(new Event('submit', { cancelable: true }))
                   }
+                  data-testid="saveBtn"
                   disabled={submitting || pristine || invalid}
                   variant="contained"
                   color="primary">

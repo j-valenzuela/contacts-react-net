@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.0.0-beta.2",
-    "@material-ui/icons": "^4.0.0-beta.0",
-    "@material-ui/styles": "^4.0.0-beta.2",
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
+    "@material-ui/styles": "^4.0.1",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.18.0",
     "clsx": "^1.0.4",
@@ -24,11 +24,14 @@
     "react-scripts": "3.0.1",
     "react-toastify": "^5.1.1",
     "rimraf": "^2.6.3",
+    "sinon": "^7.3.2",
     "sweetalert2": "^8.11.4",
     "the-country-names": "^2.2.0"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "jest-dom": "^3.4.0",
+    "react-testing-library": "^7.0.1"
   },
   "scripts": {
     "start": "rimraf ./build && react-scripts start",
