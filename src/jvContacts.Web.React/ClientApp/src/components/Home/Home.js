@@ -17,12 +17,12 @@ function Home() {
                     <Typography component={'span'} variant="body1">
                         <ul>
                             <li>React with hooks for state management and functional components</li>
-                            <li>Material UI (version 4.0.0-beta2 with support for hooks)</li>
+                            <li>Material UI - version 4.0.0 which supports hooks</li>
                             <li>Material Table (<a href="https://material-table.com/#/" target="_blank" rel="noopener noreferrer"> website</a>)</li>
                             <li>JSS (CSS via JS) included with Material UI</li>
                             <li>Responsive design</li>
                             <li>WCAG 2.0 compliance</li>
-                            <li>Unit testing with Jest and Enzyme</li>
+                            <li>Unit testing with react-testing-library (RTL)</li>
                         </ul>
                     </Typography>
                     <Typography component={'span'} variant="body1">
@@ -39,6 +39,9 @@ function Home() {
                                     <li>In-Memory driver for unit testing</li>
                                 </ul>
                             </li>
+                            <li>Fluent Validation</li>
+                            <li>AutoMapper</li>
+                            <li>MediatR</li>
                             <li>SQL Server 2017 Express</li>
                             <li>Domain Driven Design (DDD)</li>
                             <li>Command Query Responsibility Segregation (CQRS)</li>

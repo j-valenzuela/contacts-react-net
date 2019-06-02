@@ -63,7 +63,7 @@ using these technologies. It is not a production-ready application. It uses thir
 
 
 ## Architecture
-* Clean Architecture
+* Clean Architecture using [this approach](https://www.youtube.com/watch?v=Zygw4UAxCdg)
 * Domain Driven Design (DDD)
 * Command Query Responsibility Segregation (CQRS)
 * Test Driven Development (TDD)
