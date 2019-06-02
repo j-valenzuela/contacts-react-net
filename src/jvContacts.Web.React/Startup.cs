@@ -47,6 +47,9 @@ namespace jvContacts.Web.React
       services.AddDbContext<IContactDbContext, ContactDbContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+      // Add fluent validation for server-side validation. It looks for an assembly that contains
+      // one validation e.g. CreateCommandValidator but it will add any other validations contained
+      // in that assembly. Validations are executed BEFORE the command.
       services.AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateContactCommandValidator>());
